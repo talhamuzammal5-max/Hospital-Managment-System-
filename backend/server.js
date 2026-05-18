@@ -358,5 +358,5 @@ app.get('/api/dashboard/counts', async (req, res) => {
 
 // Start the server on port 5000
 app.listen(5000, () => {
-  console.log("Backend server is running on http://localhost:5000");
+  console.log("Backend server is running on mongodb+srv://admin:hospital123@hospitalcluster.vfjtnrn.mongodb.net/?appName=HospitalCluster");
 });
