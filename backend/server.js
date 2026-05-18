@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -16,7 +17,10 @@ app.use(express.json());
 // ---------------------------------------------------------
 // THE MISSING PIECE: Connect to MongoDB
 // ---------------------------------------------------------
-mongoose.connect('mongodb://127.0.0.1:27017/hospital')
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log("SUCCESS: Connected to the LOCAL MongoDB Database!"))
   .catch((err) => console.log("Database Connection Error:", err));
 // ---------------------------------------------------------
