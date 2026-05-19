@@ -16,13 +16,13 @@ function Nurses() {
   }, []);
 
   const fetchNurses = () => {
-    axios.get('http://localhost:5000/api/nurses')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/nurses')
       .then((response) => setNurses(response.data))
       .catch((error) => console.log("Error fetching nurses:", error));
   };
 
   const fetchWards = () => {
-    axios.get('http://localhost:5000/api/wards')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/wards')
       .then((response) => setWards(response.data))
       .catch((error) => console.log("Error fetching wards:", error));
   };
@@ -33,7 +33,7 @@ function Nurses() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/nurses', formData)
+    axios.post('https://hospital-backend-fpfo.onrender.com/api/nurses', formData)
       .then(() => {
         setFormData({ name: '', shift: 'Morning', assignedWard: '', contactNumber: '' });
         fetchNurses();
@@ -43,7 +43,7 @@ function Nurses() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to remove this nurse?")) {
-      axios.delete(`http://localhost:5000/api/nurses/${id}`)
+      axios.delete(`https://hospital-backend-fpfo.onrender.com/api/nurses/${id}`)
         .then(() => fetchNurses())
         .catch((error) => console.log("Error deleting nurse:", error));
     }

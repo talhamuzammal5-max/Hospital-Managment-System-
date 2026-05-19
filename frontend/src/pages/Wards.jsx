@@ -15,7 +15,7 @@ function Wards() {
   }, []);
 
   const fetchWards = () => {
-    axios.get('http://localhost:5000/api/wards')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/wards')
       .then((response) => setWards(response.data))
       .catch((error) => console.log("Error fetching wards:", error));
   };
@@ -28,7 +28,7 @@ function Wards() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/wards', formData)
+    axios.post('https://hospital-backend-fpfo.onrender.com/api/wards', formData)
       .then(() => {
         setFormData({ wardName: '', roomNumber: '', capacity: '', isAvailable: true });
         fetchWards();
@@ -38,7 +38,7 @@ function Wards() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this room?")) {
-      axios.delete(`http://localhost:5000/api/wards/${id}`)
+      axios.delete(`https://hospital-backend-fpfo.onrender.com/api/wards/${id}`)
         .then(() => fetchWards())
         .catch((error) => console.log("Error deleting ward:", error));
     }

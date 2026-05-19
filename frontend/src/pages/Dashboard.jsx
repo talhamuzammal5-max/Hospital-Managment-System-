@@ -8,7 +8,7 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/dashboard/counts')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/dashboard/counts')
       .then((response) => setCounts(response.data))
       .catch((error) => console.log("Error fetching data:", error));
   }, []);

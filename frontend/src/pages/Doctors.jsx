@@ -15,7 +15,7 @@ function Doctors() {
   }, []);
 
   const fetchDoctors = () => {
-    axios.get('http://localhost:5000/api/doctors')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/doctors')
       .then((response) => setDoctors(response.data))
       .catch((error) => console.log("Error fetching doctors:", error));
   };
@@ -26,7 +26,7 @@ function Doctors() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/doctors', formData)
+    axios.post('https://hospital-backend-fpfo.onrender.com/api/doctors', formData)
       .then(() => {
         // 2. ADDED phoneNumber to reset blank after submitting
         setFormData({ name: '', specialization: '', phoneNumber: '' });
@@ -37,7 +37,7 @@ function Doctors() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to remove this doctor?")) {
-      axios.delete(`http://localhost:5000/api/doctors/${id}`)
+      axios.delete(`https://hospital-backend-fpfo.onrender.com/api/doctors/${id}`)
         .then(() => fetchDoctors())
         .catch((error) => console.log("Error deleting doctor:", error));
     }

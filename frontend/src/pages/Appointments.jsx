@@ -20,19 +20,19 @@ function Appointments() {
   }, []);
 
   const fetchAppointments = () => {
-    axios.get('http://localhost:5000/api/appointments')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/appointments')
       .then((response) => setAppointments(response.data))
       .catch((error) => console.log("Error fetching appointments:", error));
   };
 
   const fetchPatients = () => {
-    axios.get('http://localhost:5000/api/patients')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/patients')
       .then((response) => setPatients(response.data))
       .catch((error) => console.log("Error fetching patients:", error));
   };
 
   const fetchDoctors = () => {
-    axios.get('http://localhost:5000/api/doctors')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/doctors')
       .then((response) => setDoctors(response.data))
       .catch((error) => console.log("Error fetching doctors:", error));
   };
@@ -43,7 +43,7 @@ function Appointments() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/appointments', formData)
+    axios.post('https://hospital-backend-fpfo.onrender.com/api/appointments', formData)
       .then(() => {
         setFormData({ patientId: '', doctorId: '', appointmentDate: '', reason: '', status: 'Scheduled' });
         fetchAppointments(); // Refresh the table!
@@ -53,7 +53,7 @@ function Appointments() {
 
   const handleDelete = (id) => {
     if (window.confirm("Cancel and delete this appointment?")) {
-      axios.delete(`http://localhost:5000/api/appointments/${id}`)
+      axios.delete(`https://hospital-backend-fpfo.onrender.com/api/appointments/${id}`)
         .then(() => fetchAppointments())
         .catch((error) => console.log("Error deleting appointment:", error));
     }

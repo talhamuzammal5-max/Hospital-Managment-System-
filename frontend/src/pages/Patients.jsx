@@ -14,7 +14,7 @@ function Patients() {
   }, []);
 
   const fetchPatients = () => {
-    axios.get('http://localhost:5000/api/patients')
+    axios.get('https://hospital-backend-fpfo.onrender.com/api/patients')
       .then((response) => setPatients(response.data))
       .catch((error) => console.log("Error fetching patients:", error));
   };
@@ -25,7 +25,7 @@ function Patients() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/patients', formData)
+    axios.post('https://hospital-backend-fpfo.onrender.com/api/patients', formData)
       .then(() => {
         setFormData({ name: '', age: '', symptoms: '' });
         fetchPatients();
@@ -35,7 +35,7 @@ function Patients() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this patient?")) {
-      axios.delete(`http://localhost:5000/api/patients/${id}`)
+      axios.delete(`https://hospital-backend-fpfo.onrender.com/api/patients/${id}`)
         .then(() => fetchPatients())
         .catch((error) => console.log("Error deleting patient:", error));
     }
