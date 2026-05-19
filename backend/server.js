@@ -17,11 +17,12 @@ app.use(express.json());
 // ---------------------------------------------------------
 // THE MISSING PIECE: Connect to MongoDB
 // ---------------------------------------------------------
+// ---------------------------------------------------------
+// THE MISSING PIECE: Connect to MongoDB
+// ---------------------------------------------------------
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected Successfully!"))
-  .catch((err) => console.log("Database Connection Error:", err));
-  .then(() => console.log("SUCCESS: Connected to the LOCAL MongoDB Database!"))
-  .catch((err) => console.log("Database Connection Error:", err));
+  .then(() => console.log("✅ MongoDB Connected Successfully!"))
+  .catch((err) => console.log("❌ Database Connection Error:", err));
 // ---------------------------------------------------------
 
 // Create a simple API route
@@ -359,7 +360,9 @@ app.get('/api/dashboard/counts', async (req, res) => {
   }
 });
 
-// Start the server on port 5000
-app.listen(5000, () => {
-  console.log("Backend server is running on mongodb+srv://admin:hospital123@hospitalcluster.vfjtnrn.mongodb.net/?appName=HospitalCluster");
+// Start the server on the dynamic port provided by Render, or 5000 if local
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
